@@ -1,0 +1,16 @@
+{
+  "name": "@levelupsoftware/notebook",
+  "version": "1.0.0",
+  "description": "Notizbuchfunktionen für meine NodeJS Framework-Anwendungen",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://gogs.levelupsoftware.de/levelupsoftware/notebook.git"
+  },
+  "author": "Ronny Hildebrandt",
+  "license": "ISC",
+  "dependencies": {
+    "@levelupsoftware/localdb": "^1.0.0",
+    "express": "^4.17.1"
+  }
+}
