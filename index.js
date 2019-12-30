@@ -1,7 +1,7 @@
 var express = require('express');
 var fs = require('fs');
 var localdb = require('@levelupsoftware/localdb');
-var bodyparser = require('body-parser');
+var jsonparser = require('body-parser').json({limit: '10mb', extended: true});
 
 var notebook = {
 
@@ -13,10 +13,8 @@ var notebook = {
         // Module initialisieren
         await localdb.init(app);
 
-        app.use(bodyparser.json({limit: '10mb', extended: true})); // Bilder senden braucht soviel
-
-        app.use('/api/notebook/book', require('./api/book')(express.Router(), db, auth));
-        app.use('/api/notebook/page', require('./api/page')(express.Router(), db, auth));
+        app.use('/api/notebook/book', jsonparser, require('./api/book')(express.Router(), db, auth));
+        app.use('/api/notebook/page', jsonparser, require('./api/page')(express.Router(), db, auth));
 
         app.use('/static/notebook', express.static(__dirname + '/public'));
     }
